@@ -16,6 +16,8 @@ class Student
 	int score;
 // Public fields
  public:
+	 //Default constructor
+	 Student();
 	 // Constructor to set all private fields to given values
 	Student(int newId, string newName, int newScore);
 	// Setter function for id
@@ -115,6 +117,16 @@ int main()
 
 
 	return 0;
+}
+
+Student::Student()
+{
+	// Set id to 0
+	id = 0;
+	// Set name to empty string
+	name = "";
+	// Set score to 0
+	score = 0;
 }
 
 Student::Student(int newId, string newName, int newScore)

@@ -15,6 +15,8 @@ private:
 	int height;
 // Public fields	
 public:
+	//Default constructor
+	Rectangle();
 	// Constructor to set all private fields to given values
 	Rectangle(int newWidth, int newHeight);
 	// Setter function for width
@@ -29,7 +31,7 @@ public:
 
 int main()
 {
-	// Construct 4 rectangle objects
+	 // Construct 4 rectangle objects
 	Rectangle r1(4, 3);
 	Rectangle r2(2, 8);
 	Rectangle r3(3, 5);
@@ -104,6 +106,14 @@ int main()
 	cout << "The difference : " << difference << endl;
 
 	return 0;
+}
+
+Rectangle::Rectangle()
+{
+	// Set height to 0
+	height = 0;
+	// Set width to 0
+	width = 0;
 }
 
 Rectangle::Rectangle(int newWidth, int newHeight)
