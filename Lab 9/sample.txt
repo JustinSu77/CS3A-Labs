@@ -1,0 +1,14 @@
+13
+25 Alice
+11 Peter
+13 Hailey
+7 Tommy
+10 Oliver
+20 Sandy
+5 Esther
+2 Cathy
+9 Angel
+19 Farrah
+17 Ruth
+22 Bob
+12 Diana

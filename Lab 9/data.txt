@@ -1,0 +1,11 @@
+10
+1 Alice
+1100 Peter
+1808 Hailey
+7 Tommy
+11000 Oliver
+22 Sandy
+5 Esther
+1000000 Justin
+900 Angel
+19 Farrah
