@@ -1,0 +1,11 @@
+10
+Alice 80 90
+Peter 88 91
+Erin 89 78
+Shawn 92 93
+Hailey 83 85
+Tammy 77 88
+Cindy 82 87
+Tim 89 89
+Bob 89 93
+Eugene 90 90
