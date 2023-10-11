@@ -27,6 +27,5 @@ int main()
 	cout << "sub = " << sub.getNumerator() << " / " << sub.getDenominator() << endl;
 	cout << "mul = " << mul.getNumerator() << " / " << mul.getDenominator() << endl;
 	cout << "div = " << div.getNumerator() << " / " << div.getDenominator() << endl;
-
-	return 0;
+	
 }
