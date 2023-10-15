@@ -113,10 +113,11 @@ int main()
     int elementsInArray = 0;
     // Declare and intialize counter that keeps track of how many numbers have been entered by user
     int counter = 1;
+    // Flag to ensure loop runs only once
+    bool arrayHasDoubled = false;
     // Keep looping while elementsInArray is less than the initialize array sized doubled
-    while (elementsInArray < ((initialSize * 2)))
+    while (elementsInArray < initialSize)
     {
-      
         // Declare and initialize variable to store user input
         int elementToAdd = 0;
         // Promot user for number to be added into array
@@ -142,6 +143,14 @@ int main()
             // Increment counter that keeps track of how many elements are in array by 1
             elementsInArray++;
         }
+        // If array is full and has already doubled its size once already
+        if (elementsInArray == initialSize && arrayHasDoubled)
+        {
+            // Output the elements
+            outputArray(A, n);
+            // Get out of loop
+            break;
+        }
         // If array is full
         if (elementsInArray == initialSize)
         {
@@ -151,6 +160,10 @@ int main()
             delete[] A;
             // Set array pointer to new dynamic integer array
             A = temp;
+            // Double the initialsize
+            initialSize = initialSize * 2;
+            // Set flag to loop only once to true
+            arrayHasDoubled = true;
         }
         // Output array
         outputArray(A, n);
