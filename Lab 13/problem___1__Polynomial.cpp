@@ -31,6 +31,8 @@ Polynomial::Polynomial()
 **/
 Polynomial::Polynomial(int* coef, int degree)
 {
+	// Deallocate existing coef
+	delete[] this->coef;
 	// Set private member variable degree to given degree
 	this->degree = degree;
 	// Set private member variable coef to dynamic array of MAX_COUNT with 0s
@@ -146,7 +148,7 @@ int* Polynomial::getCoef()
 **/
 Polynomial& Polynomial::operator=(const Polynomial& rightSide)
 {
-	// Deallocate private member variable coef
+	// Deallocate existing private member variable coef
 	delete[] this->coef;
 	// Set private member variable degree to the private member degree of given rightSide object
 	this->degree = rightSide.degree;
