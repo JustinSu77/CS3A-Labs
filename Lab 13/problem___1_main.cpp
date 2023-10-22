@@ -21,16 +21,17 @@ using namespace std;
 					   The first digit pair of the text file should have the degree equal to the highest degree
 					   Given dynamic array should have one more space than the first digit read from file
 	Result: The digit pairs after the first line of the file are placead in the given 
-			int dynamic array with the coefficient as the value and the degree as the index of array
+			int dynamic array with the first digit as the value and the second digit as the index of array
 **/
 void readFromFile(ifstream& inputFile, int* array);
 
 /**
-	Result: Output elements of given array to temrinal.
+	Result: Output elements of given array to terminal.
 	Input: Given array as int dynamic array
 		   arraySize as number of elements in given array as int
 	Input Requirements: Number of elements in given array should be equal to given arraySize
 					    arraySize should not be negative
+	Result: Elements of given array are outputted to terminal
 **/
 void outputArray(int* array, int arraySize);
 
@@ -39,9 +40,10 @@ void outputArray(int* array, int arraySize);
 	Input: Given array as int dynamic array
 		   Given arraySize as number of elements in array as int
 	Input Requirements: Given array is filled with data from file
-					   Number of elements in given array is equal to given arraySize
-					   Given arraySize should not be negative
-	Result: The elements of given array are printed backwards and x, +, - and ^ are added in between each element depending		  on its index and if it is positive or negative
+					    Number of elements in given array is equal to given arraySize
+					    Given arraySize should not be negative
+	Result: The elements of given array are printed backwards and x, +, - and ^ 
+			are added in between each element depending on its index and if it is positive or negative
 		    If there is only 1 element output that element and return
 **/
 void printArrayAsPolynomial(int* array, int arraySize);
@@ -54,7 +56,7 @@ void printArrayAsPolynomial(int* array, int arraySize);
 					   Number of elements in given array is equal to given arraySize
 					   Given arraySize should not be negative
 	Result: True is returned if all the elements besides first elements are zeroes
-				   False otherwise
+		    False otherwise
 **/
 bool allElementsNotFirstElementAreZeroes(int* array, int arraySize);
 
@@ -63,9 +65,9 @@ int main()
 	// File One
 	// Declare and initialize variable for name of first file
 	string fileNameOne = "";
-	// Prompt user for file name
+	// Prompt user for file name of first file
 	cout << "Enter name of file1 : ";
-	// Get input from and store into variable
+	// Get input from user and store into variable
 	getline(cin, fileNameOne);
 	// Declare ifstream object
 	ifstream inputFile;
@@ -81,11 +83,12 @@ int main()
 		//Exit program with error code 1
 		exit(1);
 	}
-	// Declare and initialize variable for highestDegree
+	// Declare and initialize variable for highest degree of file one
 	int highestDegreeOne = 0;
 	// Read first line of file and store into variable
     inputFile >> highestDegreeOne;
-	// Declare and initialize int dynamic array with space one more than highest degree to 0s
+	// Declare and initialize int dynamic array for first file with 
+	// space one more than highest degree to 0s
 	int* arrayOne = new int[highestDegreeOne + 1] {};
 	// Fill array with data from file
 	readFromFile(inputFile, arrayOne);
@@ -93,9 +96,9 @@ int main()
 	inputFile.close();
 
 	// File Two
-	// Declare and initialize variable for name of first file
+	// Declare and initialize variable for name of second file
 	string fileNameTwo = "";
-	// Prompt user for file name
+	// Prompt user for file name of second file
 	cout << "Enter name of file2 : ";
 	// Get input from and store into variable
 	getline(cin, fileNameTwo);
@@ -111,11 +114,12 @@ int main()
 		//Exit program with error code 1
 		exit(1);
 	}
-	// Declare and initialize variable for highestDegree
+	// Declare and initialize variable for highest degree of file 2
 	int highestDegreeTwo = 0;
 	// Read first line of file and store into variable
 	inputFile >> highestDegreeTwo;
-	// Declare and initialize int dynamic array with space one more than highest degree to 0s
+	// Declare and initialize int dynamic array for second file with 
+	// space one more than highest degree to 0s
 	int* arrayTwo = new int[highestDegreeTwo + 1] {};
 	// Fill array with data from file
 	readFromFile(inputFile, arrayTwo);
@@ -123,9 +127,9 @@ int main()
 	inputFile.close();
 
 	// File Three
-	// Declare and initialize variable for name of first file
+	// Declare and initialize variable for name of third file
 	string fileNameThree = "";
-	// Prompt user for file name
+	// Prompt user for file name of third file
 	cout << "Enter name of file3 : ";
 	// Get input from and store into variable
 	getline(cin, fileNameThree);
@@ -141,11 +145,12 @@ int main()
 		//Exit program with error code 1
 		exit(1);
 	}
-	// Declare and initialize variable for highestDegree
+	// Declare and initialize variable for highest degree of file 3
 	int highestDegreeThree = 0;
 	// Read first line of file and store into variable
 	inputFile >> highestDegreeThree;
-	// Declare and initialize int dynamic array with space one more than highest degree to 0s
+	// Declare and initialize int dynamic array for third file
+	//  with space one more than highest degree to 0s
 	int* arrayThree = new int[highestDegreeThree + 1] {};
 	// Fill array with data from file
 	readFromFile(inputFile, arrayThree);
@@ -153,9 +158,9 @@ int main()
 	inputFile.close();
 
 	// File Four
-	// Declare and initialize variable for name of first file
+	// Declare and initialize variable for name of fourth file
 	string fileNameFour = "";
-	// Prompt user for file name
+	// Prompt user for file name of fourth file
 	cout << "Enter name of file4 : ";
 	// Get input from and store into variable
 	getline(cin, fileNameFour);
@@ -171,11 +176,12 @@ int main()
 		//Exit program with error code 1
 		exit(1);
 	}
-	// Declare and initialize variable for highestDegree
+	// Declare and initialize variable for highest degree of fourth file
 	int highestDegreeFour = 0;
 	// Read first line of file and store into variable
 	inputFile >> highestDegreeFour;
-	// Declare and initialize int dynamic array with space one more than highest degree to 0s
+	// Declare and initialize int dynamic array for fourth file
+	//  with space one more than highest degree to 0s
 	int* arrayFour = new int[highestDegreeFour + 1] {};
 	// Fill array with data from file
 	readFromFile(inputFile, arrayFour);
@@ -189,7 +195,7 @@ int main()
 	Polynomial p2(arrayTwo, highestDegreeTwo);
 	// Declare and initialize Polynomial object sum as the result of adding objects p1 and p2
 	Polynomial sum = p1 + p2;
-	// Declare and initialize Polynomial object difference as the reslt of subtracting objects p1 and p2
+	// Declare and initialize Polynomial object difference as the result of subtracting objects p1 and p2
 	Polynomial difference = p1 - p2;
 	// Output Polynomial object p1
 	cout << "Polynomial A   : ";
@@ -209,20 +215,20 @@ int main()
 	// Declare and initialize Polynomial object with corresponding dynamic array and degree
 	Polynomial p3(arrayThree, highestDegreeThree);
 	Polynomial p4(arrayFour, highestDegreeFour);
-	// Declare and initialize Polynomial object sum as the result of adding objects p1 and p2
+	// Declare and initialize Polynomial object sumTwo as the result of adding objects p3 and p4
 	Polynomial sumTwo = p3 + p4;
-	// Declare and initialize Polynomial object difference as the reslt of subtracting objects p1 and p2
+	// Declare and initialize Polynomial object differenceTwo as the reslt of subtracting objects p3 and p4
 	Polynomial differenceTwo = p3 - p4;
-	// Output Polynomial object p1
+	// Output Polynomial object p3
 	cout << "Polynomial C   : ";
 	printArrayAsPolynomial(p3.getCoef(), p3.getDegree() + 1);
-	// Output Polynomial object p2
+	// Output Polynomial object p4
 	cout << "Polynomial D   : ";
 	printArrayAsPolynomial(p4.getCoef(), p4.getDegree() + 1);
-	// Output Polynomial object sum
+	// Output Polynomial object sumTwo
 	cout << "Polynomial C+D : ";
 	printArrayAsPolynomial(sumTwo.getCoef(), sumTwo.getDegree());
-	// Output Polynomial object difference
+	// Output Polynomial object differenceTwo
 	cout << "Polynomial C-D : ";
 	printArrayAsPolynomial(differenceTwo.getCoef(), differenceTwo.getDegree());
 	
@@ -231,9 +237,9 @@ int main()
 
 void readFromFile(ifstream& inputFile, int* array)
 {
-	// Declare nad initialize variable to store coefficient
+	// Declare and initialize variable to store coefficient
 	int coefficient = 0;
-	// Declare and intialize variable to store degree
+	// Declare and initialize variable to store degree
 	int degree = 0;
 	// Keep reading from file until the end
 	while (!inputFile.eof())

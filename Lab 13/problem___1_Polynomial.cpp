@@ -24,7 +24,8 @@ Polynomial::Polynomial()
 	Input: coef as int dynamic array
 		   degree as the highest degree object created will have as int
 	Input Requirement: degree should be positive
-	Result: Private member variable degree is set to given degree
+	Result: 
+			Private member variable degree is set to given degree
 			Private member variable coef points to a int dynamic array with MAX_COUNT size of 0s
 			Elements from given coef is then copied into private member variable coef up to given degree + 1
 **/
@@ -47,15 +48,15 @@ Polynomial::Polynomial(int* coef, int degree)
 	Input: const reference of existing object of this class
 	Input Requirement: Given object reference references an object 
 			          of this class that is already instantiated
-	Result: Private member variable degree is set to the degree of given object reference
+	Result: Deallocates existing dynamic array pointed to by private member variable coef
+			Private member variable degree is set to the degree of given object reference
 			Private member variable coef is set to int dynamic array with size of MAX_COUNT of 0s
 			Copy degree + 1 elements from the private member variable coef of given object reference 
 			of this class to the private member variable coef
 **/
 Polynomial::Polynomial(const Polynomial& poly)
 {
-	// Deallocate dynamic array pointed to by private member variable coef
-	delete[] this->coef;
+
 	// Set private member variable degree to the private 
 	// member variable of given object reference of this class
 	this->degree = poly.degree;
@@ -94,7 +95,8 @@ void Polynomial::setDegree(int degree)
 	Input: coef as pointer to int dynamic array
 		   degree as int
 	Input Requirement: Give degree should be >= 0
-	Result: Set private member variable degree to given degree
+	Result: Deallocates existing dynamic array pointed to by private member variable
+			Set private member variable degree to given degree
 			Set private member variable coef to be int dynamic array with size of MAX_COUNT of 0s
 			Copy elements of given coef to private member variable coef
 **/
@@ -137,7 +139,7 @@ int* Polynomial::getCoef()
 	Purpose: Overload Assignment operator.
 	Input: rightSide as const reference as existing object of this class
 	Input Requirement: Given object rightSide should be instantiated
-	Result: Deallocates private member coef
+	Result: Deallocates dynamic array pointed to by private member variable coef
 			Sets private member variable degree to the private member degree of given rightSide object
 			Sets private mmeber coef to dynamic array of int with MAX_COUNT size of 0s
 			Copy the elements from the private member coef of given rightSide object to private member variable coef
@@ -209,7 +211,7 @@ Polynomial operator+(const Polynomial& leftSide, const Polynomial& rightSide)
 			resultArray[i] = leftSide.coef[i] + rightSide.coef[i];
 		}
 	}
-	// Otherwise if the degrees of given object ar equal
+	// Otherwise if the degrees of given object are equal
 	else
 	{
 		// Just loop backwards 
@@ -279,7 +281,7 @@ Polynomial operator-(const Polynomial& leftSide, const Polynomial& rightSide)
 			resultArray[i] = leftSide.coef[i] - rightSide.coef[i];
 		}
 	}
-	// Otherwise if the degrees of given object ar equal
+	// Otherwise if the degrees of given object are equal
 	else
 	{
 		// Just loop backwards 

@@ -12,6 +12,7 @@ class Polynomial
 		Polynomial(int* coef, int degree);
 		Polynomial(const Polynomial& poly); // Copy constructor
 		~Polynomial();
+
 		// setters and getters
 		void setDegree(int degree);
 		void setCoef(int* coef, int degree);
