@@ -4,6 +4,7 @@
 	Purpose: Problem #2 of Lab #14
 **/
 #include <iostream>
+#include <cctype>
 using namespace std;
 
 /**

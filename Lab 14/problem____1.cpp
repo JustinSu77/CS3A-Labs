@@ -4,6 +4,7 @@
 	Purpose: Problem #1 of Lab #14
 **/
 #include <iostream>
+#include <cctype>
 using namespace std;
 
 /**
@@ -43,12 +44,12 @@ int main()
 			// OutputSize is the length of a segment of characters 
 			// from first letter of a word to current index
 			int outputSize = i - startingIndex;
-			
+
 			// Create space for to save one word
 			// Create char dynamic array with 1 more space needed
 			// for null character terminator
 			char* output = new char[outputSize + 1];
-			
+
 			// Declare and initialize copyIndex used to copy elements from 
 			// sentence cstring to output dynamic array
 			int copyIndex = startingIndex;
@@ -62,11 +63,11 @@ int main()
 			}
 			// Set last character of dynamic array to null character terminator
 			output[outputSize] = '\0';
-			
+
 			// Output char dynamic array
-			 cout << output << endl;
-			
-			 // Deallocate char dynamic array
+			cout << output << endl;
+
+			// Deallocate char dynamic array
 			delete[] output;
 			// Set startingIndex to first letter of next word
 			startingIndex = i + 1;
