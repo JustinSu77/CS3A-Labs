@@ -13,50 +13,58 @@ typedef Node* NodePtr;
 /**
 	Purpose: Output data of nodes in Linked List to terminal.
 	Input: head as NodePtr to first node of Linked List
-	Input Requirement: Given head as Nodeptr to first node of Linked List or is NULL
-	Result: The data of each node in Linked List is outputted to terminal
+	Input Requirement: Given head as Nodeptr to first node
+					   of Linked List or is NULL
+	Result: The data of each node in Linked List
+			is outputted to terminal
 **/
 void printList(NodePtr head);
 
 /**
-	Purpose: Insert new node with given newValue 
-			 into with head of given head Linked list while maintaining sorted order.
-	Input: head as pointer ot first node of Linked List or NULL
-		   newValue as the value the new node inserted will have
-	Input Requirement: Given head should point to first node of LInked List or NULL
-					   Given newValue should be an integer
-	Result: - New dynamically allocated Node with given newValue is 
-			 inserted into Linked List with head pointed by given head 
-			 while maintaining sorted order
-			-If Linked List was empty, make newNode the head
-			-If newValue is less than data of head, insert it 
-			 at the front of Linked List and make it the head 
+	Purpose: Insert new dynamically allocated node with given newValue
+			 into Linked list while maintaining sorted order.
+	Input: - head as NodePtr pointer of first node of Linked List
+		   - newValue as the value the new node inserted
+			 will have as int
+	Input Requirement: - Given head should point to first node
+						 of Linked List or NULL
+					   - Given newValue should be an integer
+	Result: - New dynamically allocated Node with given newValue is
+			  inserted into Linked List with head pointed by given head
+			  while maintaining sorted order
+			- If Linked List was empty, make newNode the head
+			- If newValue is less than data of head, insert it
+			  at the front of Linked List and make it the head
 **/
 void insertNodeInSortedOrder(NodePtr& head, int newValue);
 
 /**
-	Purpose: Merges the two Linked Lists with their heads pointed 
-			 to by the given NodePtr and returns a NodePtr to 
+	Purpose: Merges the two Linked Lists with their heads pointed
+			 to by the given NodePtr and returns a NodePtr to
 			 the head of this merged list.
-	Input: listOne as NodePtr to head of first Linked List
-		   listTwo as NodePtr to head of second Linked List
-	Input Requirement: -Given listOneHead points to first node 
-					    of first Linked List or NULL
-					   -Given listTwoHead points to first node 
-					    of second Linked List or NULL
-	Result: A NodePtr pointer to a larger Linked List with the 
-	        nodes of the given Linked Lists in sorted order is returned
+	Input: - listOne as NodePtr to head of first Linked List
+		   - listTwo as NodePtr to head of second Linked List
+	Input Requirement: - Given listOneHead points to first node
+						 of first Linked List and is not NULL
+					   - Given listTwoHead points to first node
+						 of second Linked List and is not NULL
+	Result: - If both given listOneHead and listTwoHead
+			  are NULL, return NULL
+			- If given listOneHead is NULL, return listTwoHead
+			- If given listTwoHead is NULL, return listOneHead
+			- A NodePtr pointer to a larger Linked List with the
+			  nodes of the given Linked Lists in sorted order is returned
 **/
-NodePtr mergeTwoLists(NodePtr listOneHead, NodePtr listTwoHead);
+Node* mergeTwoLists(Node* listOneHead, Node* listTwoHead);
 
 
 /**
-	Purpose: Deallocates the nodes in Linked List with head pointed 
+	Purpose: Deallocates the nodes in Linked List with head pointed
 	to by given head
 	Input: head as NodePtr to first node of Linked List
 	Input Requirement: Given head points to the first node of Linked List
 	Result: If given head is NULL, return
-			Otherwise the nodes of Linked List is deallocated
+			Otherwise the nodes of Linked List are deallocated
 **/
 void deallocateList(NodePtr& head);
 
@@ -66,7 +74,7 @@ int main()
 	// number of elements in first LinkedList
 	int listOneSize = 0;
 	// Prompt user for number of nodes first Linked List will have
-	cout << "Enter the number of elements in first linkedlist: ";
+	cout << "Enter number of elements in first linkedlist: ";
 	// Store userinput into listOneSize
 	cin >> listOneSize;
 	// If given listOneSize is less than or equal to 0
@@ -98,12 +106,12 @@ int main()
 	}
 	// Output newline to terminal for readability
 	cout << endl;
-	
+
 	// Declare and initialize variable for 
 	// number of elements in second LinkedList
 	int listTwoSize = 0;
 	// Prompt user for number of nodes second Linked List will have
-	cout << "Enter the number of elements in second linkedlist: ";
+	cout << "Enter number of elements in second linkedlist: ";
 	// Store userinput into listTwoSize
 	cin >> listTwoSize;
 	// If given listTwoSize is less than or equal to 0
@@ -133,7 +141,7 @@ int main()
 	}
 	// Output newline to terminal for readability
 	cout << endl;
-	 
+
 	// Output the data of nodes in first linked List
 	cout << "The first linked list is shown as:" << endl;
 	printList(listOneHead);
@@ -176,7 +184,7 @@ void printList(NodePtr head)
 	cout << "NULL" << endl;
 }
 
- 
+
 
 void insertNodeInSortedOrder(NodePtr& head, int newValue)
 {
@@ -219,8 +227,26 @@ void insertNodeInSortedOrder(NodePtr& head, int newValue)
 	prev->setLink(newNode);
 }
 
-NodePtr mergeTwoLists(NodePtr listOneHead, NodePtr listTwoHead)
+Node* mergeTwoLists(Node* listOneHead, Node* listTwoHead)
 {
+	// If both linked lists are empty
+	if (listOneHead == NULL && listTwoHead == NULL)
+	{
+		// Return NULL
+		return NULL;
+	}
+	// If first linked list is empty
+	if (listOneHead == NULL)
+	{
+		// Return head of second linked list
+		return listTwoHead;
+	}
+	// If second linked list is empty
+	if (listTwoHead == NULL)
+	{
+		// Return head of first linked list
+		return listOneHead;
+	}
 	// Declare and initialize pointer to 
 	// head of merged list that will be returned
 	NodePtr result = NULL;
@@ -264,7 +290,7 @@ void deallocateList(NodePtr& head)
 	if (head == NULL)
 	{
 		// Get out of function
-		 return;
+		return;
 	}
 	// Declare and initialize pointer to 
 	// traverse Linked List to start at head

@@ -5,7 +5,8 @@
 **/
 #pragma once
 
-// Class for Node of Linked List
+// Class for Node of Linked List 
+// with int data
 class Node
 {
 public:
@@ -13,17 +14,17 @@ public:
 		Purpose: Default constructor.
 		Precondition: Node object is instantiated
 		Postcondition: -Private member variable data is set to 0
-					   -Private member variable link is set to NULL
+				   -Private member variable link is set to NULL
 	**/
 	Node();
 
 	/**
 		Purpose: Constructor with 2 arguments.
 		Precondition: Node object is instantiated
-		Postcondition: -Private member variable newData
-					   is set to given newData
-					   -Private member variable nextNode is set
-					   to point to given nextNode
+		Postcondition: - Private member variable data
+						 is set to given newData
+					   - Private member variable nextNode is set
+						 to point to given nextNode
 	**/
 	Node(int newData, Node* nextNode);
 
@@ -54,8 +55,12 @@ public:
 		Postcondition: Private member link is returned
 	**/
 	Node* getLink() const;
+	// Private member variables
+
 private:
+	// Private member variable data 
 	int data;
+	// Private member variable link
 	Node* link;
 };
 

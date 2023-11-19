@@ -12,24 +12,28 @@ typedef Node* NodePtr;
 /**
 	Purpose: Output data of nodes in Linked List to terminal.
 	Input: head as NodePtr to first node of Linked List
-	Input Requirement: Given head as Nodeptr to first node of Linked List or is NULL
-	Result: The data of each node in Linked List is outputted to terminal
+	Input Requirement: Given head as Nodeptr to first 
+	      node of Linked List or is NULL
+	Result: The data of each node in Linked List 
+			is outputted to terminal
 **/
 void printList(NodePtr head); 
 
 /**
 	Purpose: Insert new node with given newValue
-			 into with head of given head Linked list while maintaining sorted order.
-	Input: head as pointer ot first node of Linked List or NULL
-		   newValue as the value the new node inserted will have
-	Input Requirement: Given head should point to first node of LInked List or NULL
-					   Given newValue should be an integer
+			 into with head of given head Linked list 
+			 while maintaining sorted order.
+	Input: - head as pointer ot first node of Linked List or NULL
+		   - newValue as the value the new node inserted will have
+	Input Requirement: - Given head should point to first 
+						 node of Linked List or NULL
+					   - Given newValue should be an integer
 	Result: - New dynamically allocated Node with given newValue is
-			 inserted into Linked List with head pointed by given head
-			 while maintaining sorted order
-			-If Linked List was empty, make newNode the head
-			-If newValue is less than data of head, insert it
-			 at the front of Linked List and make it the head
+			  inserted into Linked List with head pointed by given head
+			  while maintaining sorted order
+			- If Linked List was empty, make newNode the head
+			- If newValue is less than data of head, insert it
+			  at the front of Linked List and make it the head
 **/
 void insertNodeInSortedOrder(NodePtr& head, int newValue);
 
@@ -38,16 +42,23 @@ void insertNodeInSortedOrder(NodePtr& head, int newValue);
 	Purpose: Return a pointer to a merged linked list that 
 		 	 is in sorted order by readjusting the nodes 
 			 of the given Linked Lists.
-	Input: listOneHead as NodePtr to first node of first Linked List
-		   listTwoHead as NodePtr to first node of second Linked List
-	Input Requirement: Given  listOneHead should point to first node of first Linked List
-					   Given listTwoHead should point to first node of second Linked List
-	Result:  -If either of the given Linked Lists are empty, exit program with code 1
-			 -Return a pointer to a larger Linked List consisting of the 
-			 nodes of the given Linked Lists in sorted order by 
-			 readjusting their pointers.
+	Input: - listOneHead as NodePtr to first node of 
+	         first Linked List
+		   - listTwoHead as NodePtr to first node of 
+		     second Linked List
+	Input Requirement: - Given  listOneHead should point to 
+	                     first node of first Linked List
+					   - Given listTwoHead should point to first 
+					     node of second Linked List
+	Result:  - If both given listOneHead and listTwoHead 
+			  are NULL, return NULL
+			 - If given listOneHead is NULL, return listTwoHead
+			 - If given listTwoHead is NULL, return listOneHead
+			 - Return a pointer to a larger Linked List consisting of the 
+			   nodes of the given Linked Lists in sorted order by 
+			   readjusting their pointers.
  **/
-NodePtr mergeTwoLists(NodePtr listOneHead, NodePtr listTwoHead);
+Node* mergeTwoLists(Node* listOneHead, Node* listTwoHead);
 
 /**
 	Purpose: Deallocates the nodes in Linked List with head pointed
@@ -55,7 +66,7 @@ NodePtr mergeTwoLists(NodePtr listOneHead, NodePtr listTwoHead);
 	Input: head as NodePtr to first node of Linked List
 	Input Requirement: Given head points to the first node of Linked List
 	Result: If given head is NULL, return
-			Otherwise the nodes of Linked List is deallocated
+			Otherwise the nodes of Linked List are deallocated
 **/
 void deallocateList(NodePtr& head);
  
@@ -65,7 +76,7 @@ int main()
 	// number of elements in first LinkedList
 	int listOneSize = 0;
 	// Prompt user for number of nodes first Linked List will have
-	cout << "Enter the number of elements in first linkedlist: ";
+	cout << "Enter number of elements in first linkedlist: ";
 	// Store userinput into listOneSize
 	cin >> listOneSize;
 	// If given listOneSize is less than or equal to 0
@@ -102,7 +113,7 @@ int main()
 	// number of elements in second LinkedList
 	int listTwoSize = 0;
 	// Prompt user for number of nodes second Linked List will have
-	cout << "Enter the number of elements in second linkedlist: ";
+	cout << "Enter number of elements in second linkedlist: ";
 	// Store userinput into listTwoSize
 	cin >> listTwoSize;
 	// If given listTwoSize is less than or equal to 0
@@ -111,7 +122,7 @@ int main()
 		// Output newline to terminal for readability
 		cout << endl;
 		//Notify
-		cout << "listTwoSize should be greater than 0" << endl;
+		cout << "Size of second Linked List should be greater than 0" << endl;
 		// Exit program with error code 1
 		exit(1);
 	}
@@ -213,27 +224,25 @@ void insertNodeInSortedOrder(NodePtr& head, int newValue)
 }
 
 
-NodePtr mergeTwoLists(NodePtr listOneHead, NodePtr listTwoHead)
+Node* mergeTwoLists(Node* listOneHead, Node* listTwoHead)
 {
+	// If both given linked lists are empty
+	if (listOneHead == NULL && listTwoHead == NULL)
+	{
+		// Return NULL
+		return NULL;
+	}
 	// If first Linked List is empty
 	if (listOneHead == NULL)
 	{
-		// Output newline to terminal for readability
-		cout << endl;
-		// Notify
-		cout << "First Linked List is empty!" << endl;
-		// Exit program with error code 1
-		exit(1);
+		// Return head of second Linked List
+		return listTwoHead;
 	}
 	// If second Linked List is empty
 	if (listTwoHead == NULL)
 	{
-		// Output newline to terminal for readability
-		cout << endl;
-		// Notify
-		cout << "Second Linked List is empty" << endl;
-		// Exit program with error code 1
-		exit(1);
+		// Return head of first linked list
+		return listOneHead;
 	} 
 	// Declare and initialize pointer that will be returned
 	NodePtr result = NULL;
@@ -245,7 +254,8 @@ NodePtr mergeTwoLists(NodePtr listOneHead, NodePtr listTwoHead)
 	// equal to the first node of second Linked List
 	if (listOneTraverse->getData() <= listTwoTraverse->getData())
 	{
-		// Set the head of merged list to be the first node of first Linked List
+		// Set the head of merged list to be the first 
+		// node of first Linked List
 		result = listOneTraverse;
 		// Traverse to next node of first Linked List
 		listOneTraverse = listOneTraverse->getLink();
@@ -254,7 +264,8 @@ NodePtr mergeTwoLists(NodePtr listOneHead, NodePtr listTwoHead)
 	// equal to the first node of second Linked List
 	else
 	{
-		// Set the head of merged list to be the first node of second Linked List
+		// Set the head of merged list to be the first node 
+		// of second Linked List
 		result = listTwoTraverse;
 		// Traverse to next node of second Linked List
 		listTwoTraverse = listTwoTraverse->getLink();
@@ -262,13 +273,16 @@ NodePtr mergeTwoLists(NodePtr listOneHead, NodePtr listTwoHead)
 	// Declare and initialize a temp node to store last node 
 	// added to start at head of merged sorted list
 	NodePtr lastNodeAdded = result;
-	// While listOneTraverse and listTwoTraverse are not at end of their Linked Lists
+	// While listOneTraverse and listTwoTraverse are not 
+	// at end of their Linked Lists
 	while (listOneTraverse != NULL && listTwoTraverse != NULL) 
 	{
-		// If the current node of first Linked List is less than or equal to the current node of the second Linked List
+		// If the current node of first Linked List is less than or 
+		// equal to the current node of the second Linked List
 		if (listOneTraverse->getData() <= listTwoTraverse->getData())
 		{
-			// Readjust next node of lastNodeAdded to current node of first Linked List
+			// Readjust next node of lastNodeAdded to 
+			// current node of first Linked List
 			lastNodeAdded->setLink(listOneTraverse);
 			// Set the lastNodeAdded to curent node of first Linked List
 			lastNodeAdded = listOneTraverse;
@@ -279,9 +293,11 @@ NodePtr mergeTwoLists(NodePtr listOneHead, NodePtr listTwoHead)
 		// or equal to the current node of the first Linked List
 		else if (listTwoTraverse->getData() <= listOneTraverse->getData())
 		{
-			// Readjust next node of lastNodeAdded to current node of second Linked List
+			// Readjust next node of lastNodeAdded to current 
+			// node of second Linked List
 			lastNodeAdded->setLink(listTwoTraverse);
-			// Set the lastNodeAdded to curent node of second Linked List
+			// Set the lastNodeAdded to curent node of 
+			// second Linked List
 			lastNodeAdded = listTwoTraverse;
 			// Go to next node in second Linked List
 			listTwoTraverse = listTwoTraverse->getLink();

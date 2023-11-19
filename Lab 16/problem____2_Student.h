@@ -14,17 +14,21 @@ public:
 	/**
 		Purpose: Default contructor.
 		Precondition: Student object is instantiated with no arguments
-		Postcondition: Sets private member variable id to 0
-					   Sets private member variable name to empty string
-					   Sets private member variable score to 0
+		Postcondition: - Sets private member variable id to 0
+					   - Sets private member variable name 
+					     to empty string
+					   - Sets private member variable score to 0
 	**/
 	Student();
 	/**
 		Purpose: Constructor with 3 arguments.
 		Precondition: Student object is instantiated with 3 arguments
-		Postcondition: Sets private member variable id to given newId
-					   Sets private member variable name to given newName
-					   Sets private member variable score to given newScore
+		Postcondition: - Sets private member variable 
+		                 id to given newId
+					   - Sets private member variable 
+					     name to given newName
+					   - Sets private member variable 
+					     score to given newScore
 	**/
 	Student(int newId, std::string newName, int newScore);
 

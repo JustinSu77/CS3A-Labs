@@ -27,7 +27,8 @@ typedef struct Node* NodePtr;
 			 order of Student id.
 	Input: - head as NodePtr pointer to first node of Linked List
 		   - obj as object of Student class
-	Input Requirement: - head as NodePtr pointer to first node of											   Linked List
+	Input Requirement: - head as NodePtr pointer to first node of 
+					     Linked List
 					   - obj as object of Student class
 	Result: Insert node into Linked List maintaining
 			sorted order based on id of Student object

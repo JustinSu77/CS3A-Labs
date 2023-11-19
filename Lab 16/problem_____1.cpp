@@ -30,14 +30,14 @@ typedef struct Node* NodePtr;
 void printList(NodePtr head);
 
 /**
-	Purpose: Insert new dynamically allocated Node variable 
-			 with given newValue at start of Linked List.
+	Purpose: Insert new node with given newValue as its data 
+			 at start of Linked List.
 	Input: head as NodePtr pointer to first
 			node of Linked list
 	Input Requirement: - Given head pointer points to
 					     first node in Linked List or NULL
 					   - Given newValue should be an integer
-	Result: - Insert new node with given newValue into
+	Result: - Insert new dynamically allocated struct Node variable			    as node with given newValue as its data into 
 			  front of Linked List.
 			- Set head to point to this newNode.
 **/
@@ -63,7 +63,7 @@ bool targetDataExistsInLinkedList(NodePtr head, int targetData);
 	Input: -head as NodePtr pointer to first node of Linked List
 		   -targetData as data of Node to delete
 	Input Requirement: - Given head points to the first
-					    node of Linked List or is NULL
+					     node of Linked List or is NULL
 					   - Given targetData is an integer
 	Result: - Node in Linked List with data of given
 			  targetData is deleted.
@@ -76,7 +76,8 @@ void deleteNodeWithTargetData(NodePtr& head, int targetData);
 /**
 	Purpose: Deallocate the dynamically allocated 
 			 nodes of Linked List.
-	Input: head NodePtr reference
+	Input: head NodePtr reference as pointer to 
+	       first node of Linked List
 	Input Requirement: Given head should point to
 					   first node of Linked List or NULL
 	Result: Nodes of Linked List are deallocated.
@@ -151,7 +152,8 @@ int main()
 		cin >> userInput;
 		// Keep looping while user input is not N or n
 	} while (userInput != 'N' && userInput != 'n');
-	// Call function to deallocae all nodes in Linked List
+	
+	// Call function to deallocate all nodes in Linked List
 	deallocateList(head);
 
 	return 0;
@@ -224,7 +226,7 @@ void deleteNodeWithTargetData(NodePtr& head, int targetData)
 		return;
 	}
 	// If head is the only node
-	if (head->next == NULL)
+	if (head->next == NULL && head->data == targetData)
 	{
 		// Delete head
 		delete head;
@@ -245,7 +247,8 @@ void deleteNodeWithTargetData(NodePtr& head, int targetData)
 		// Get out of function
 		return;
 	}
-	// Declare and initialize pointer to traverse linked list
+	// Declare and initialize pointer to traverse 
+	// linked list
 	NodePtr traverse = head;
 	// Declare and initialize pointer that will point to the node before traverse
 	NodePtr prev = head;
@@ -255,7 +258,7 @@ void deleteNodeWithTargetData(NodePtr& head, int targetData)
 		// If the current node has data of given targetData
 		if (traverse->data == targetData)
 		{
-			// Grt out of loop
+			// Get out of loop
 			break;
 		}
 		// Save current node to prev
